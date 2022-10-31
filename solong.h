@@ -6,7 +6,7 @@
 /*   By: seungjki <seungjki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 06:09:13 by seungjki          #+#    #+#             */
-/*   Updated: 2022/10/31 14:28:46 by seungjki         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:11:36 by seungjki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define SO_LONG_H
 # define BUFFER_SIZE 500
 
+# include <mlx.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "./mlx/mlx.h"
 # include <unistd.h>
 
 typedef struct s_gnl
@@ -86,7 +86,7 @@ typedef struct	s_hook
 
 int		ft_strlen(char *str);
 int		ber_hwak_in(char *name_of_deb);
-int		initialize_everything(void **mlx, void **win, t_img *img, char *name_of_ber);
+int		initialize_everything(void **mlx, t_img *img, char *name_of_ber);
 int		map_making(t_mlx *mlx, t_img img);
 int		indexof(char *str, char c);
 int		indexof1(char **str, char c, int idx);

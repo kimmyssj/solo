@@ -6,7 +6,7 @@
 /*   By: seungjki <seungjki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:48:42 by seungjki          #+#    #+#             */
-/*   Updated: 2022/10/31 12:35:27 by seungjki         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:30:45 by seungjki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,26 @@ void	free_all(char ***str)
 	free(*str);
 }
 
-int	key_hook(int keycode, t_both both)
+int	key_hook(int keycode, t_both *both)
 {
 	int	flag;
 
 	flag = 0;
 	if (keycode == 0)
-		flag = left_is_pressed(both.mlx, both.img);
+		flag = left_is_pressed(both->mlx, both->img);
 	else if (keycode == 1)
-		flag = down_is_pressed(both.mlx, both.img);
+		flag = down_is_pressed(both->mlx, both->img);
 	else if (keycode == 2)
-		flag = right_is_pressed(both.mlx, both.img);
+		flag = right_is_pressed(both->mlx, both->img);
 	else if (keycode == 13)
-		flag = up_is_pressed(both.mlx, both.img);
+		flag = up_is_pressed(both->mlx, both->img);
 	else if (keycode == 53)
 		exit(0);
 	if (flag == 0)
 		return (0);
 	else if (flag == 1)
 	{
-		write(1, "Congrats! You won!", 18);
+		write(1, "Congrats! You win!", 18);
 		exit(0);
 	}
 	write(2, "Number count failed", 20);
@@ -61,7 +61,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		return (write(2, "Need only two argv", 19));
-	if (initialize_everything(&mlx.mlx, &mlx.win, &img, argv[1]))
+	if (initialize_everything(&mlx.mlx, &img, argv[1]))
 		return (write(2, "Initialize fail", 16));
 	mlx.map = make_it_double_array(argv[1]);
 	if (mlx.map == 0)
